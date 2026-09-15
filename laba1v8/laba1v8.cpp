@@ -4,6 +4,13 @@
 #include <cstdlib>  
 #include <ctime>
 
+/*
+ * Переворачивает часть массива.
+ *
+ * @param arr массив целых чисел.
+ * @param left индекс начала участка.
+ * @param right индекс конца участка.
+ */
 void reverseArray(int arr[], int left, int right) {
     while (left < right) {
         int temp = arr[left];
@@ -14,7 +21,14 @@ void reverseArray(int arr[], int left, int right) {
         right--;
     }
 }
-    void shiftArray(int arr[], int k, int N) {
+/*
+* Выполняет циклический сдвиг массива вправо.
+*
+* @param arr массив целых чисел.
+* @param k величина сдвига.
+* @param N размер массива.
+*/
+    void shiftArray(int arr[], int k, const int N) {
         k = k % N;
 
         reverseArray(arr, 0, N - 1);
@@ -22,16 +36,26 @@ void reverseArray(int arr[], int left, int right) {
         reverseArray(arr, k, N - 1);
 
     }
-
-
-
-void printArray(int arr[], int N) {
+/*
+ * Выводит массив на экран.
+ *
+ * @param arr массив целых чисел.
+ * @param N размер массива.
+ */
+void printArray(int arr[], const int N) {
     for (int i = 0; i < N; i++) {
         std::cout << arr[i] << " ";
     }
     std::cout << "\n";
 }
 
+/*
+ * Вычисляет сумму элементов массива.
+ *
+ * @param arr массив целых чисел.
+ * @param N размер массива.
+ * @return возвращает сумму элементов массива.
+ */
 int sumArray(int arr[], const int N) {
     int sum = 0;
     for (int i = 0; i < N; i++) {
@@ -41,8 +65,13 @@ int sumArray(int arr[], const int N) {
 
 }
 
+/*
+ * Заполняет массив случайными числами.
+ *
+ * @param arr массив целых чисел.
+ * @param N размер массива.
+ */
 void generateArray(int arr[], const int N) {
-    srand(time(0));
     for (int i = 0; i < N; i++) {
         arr[i] = rand() % 10;
     }
@@ -50,6 +79,7 @@ void generateArray(int arr[], const int N) {
 
 int main()
 {
+    srand(time(0));
     std::cout << "Hello World!\n";
     const int N = 5;
     int arr[N] = {};
@@ -64,7 +94,5 @@ int main()
     std::cout << "output: ";
     printArray(arr, N);
     std::cout << "sum: " << sumArray(arr, N) << "\n";
-
-
 
 }
